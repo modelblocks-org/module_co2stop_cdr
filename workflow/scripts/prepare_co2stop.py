@@ -348,13 +348,13 @@ def main() -> None:
     countries = gpd.read_file(snakemake.input.countries).to_crs(geo_crs)
     fig, ax = plot_kept_polygons(countries, all_polygons, dataset[data_id])
     ax.set_title(f"Kept polygons for '{dataset_name}:{cdr_group}'.")
-    fig.savefig(snakemake.output.plot_kept, dpi=200)
+    fig.savefig(snakemake.output.plot_kept, dpi=300, bbox_inches="tight")
     # Plot scenarios
     fig, _ = plot_scenarios(dataset[capacity_cols])
     fig.suptitle(
         f"Full CO2Stop dataset scenario comparison for '{dataset_name}:{cdr_group}'"
     )
-    fig.savefig(snakemake.output.plot_scenarios, dpi=200)
+    fig.savefig(snakemake.output.plot_scenarios, dpi=300, bbox_inches="tight")
 
     # Remove unnecessary columns, add extra metadata, validate, save
     final_cols = list(id_columns.keys()) + capacity_cols.to_list() + ["geometry"]
