@@ -20,7 +20,7 @@ python = ">=3.12"
 ruff = ">=0.9.9"
 snakefmt = ">=0.10.2"
 snakemake-minimal = ">=8.29.0"
-pytz = ">=2025.2,<2026"
+pytz = ">=2025.2"
 
 [tasks]
 test-integration = {cmd = "pytest tests/clio_test.py"}

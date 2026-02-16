@@ -33,7 +33,7 @@ def main() -> None:
 
     fig, _ = _plots.plot_aggregate(shapes, totals)
     fig.suptitle(f"Total sequestration potential in {scenario!r} scenario")
-    fig.savefig(snakemake.output.plot, dpi=200)
+    fig.savefig(snakemake.output.plot, dpi=300, bbox_inches="tight")
 
 
 if __name__ == "__main__":
