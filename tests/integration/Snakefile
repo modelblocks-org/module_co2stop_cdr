@@ -24,7 +24,7 @@ module module_co2stop_cdr:
         # Redirect module intermediate files
         logs="resources/co2stop_cdr/logs",
         resources="resources/co2stop_cdr/resources",
-        results="resources/co2stop_cdr/results"
+        results="resources/co2stop_cdr/results",
 
 
 # rename all module rules with a prefix, to avoid naming conflicts.
