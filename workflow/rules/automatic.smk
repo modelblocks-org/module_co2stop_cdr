@@ -7,9 +7,9 @@ rule download_co2stop:
     params:
         url=internal["resources"]["automatic"]["co2stop"],
     output:
-        zipfile="resources/automatic/co2stop.zip",
+        zipfile="<resources>/automatic/co2stop.zip",
     log:
-        "logs/download_co2stop.log",
+        "<logs>/download_co2stop.log",
     conda:
         "../envs/shell.yaml"
     shell:
@@ -28,13 +28,13 @@ rule unzip_co2stop:
     input:
         zipfile=rules.download_co2stop.output.zipfile,
     output:
-        storage_data="resources/automatic/co2stop/storage_data.csv",
-        storage_map="resources/automatic/co2stop/storage_map.kml",
-        traps_data="resources/automatic/co2stop/traps_data.csv",
-        traps_map="resources/automatic/co2stop/traps_map.kml",
-        country_map="resources/automatic/co2stop/countries.kml",
+        storage_data="<resources>/automatic/co2stop/storage_data.csv",
+        storage_map="<resources>/automatic/co2stop/storage_map.kml",
+        traps_data="<resources>/automatic/co2stop/traps_data.csv",
+        traps_map="<resources>/automatic/co2stop/traps_map.kml",
+        country_map="<resources>/automatic/co2stop/countries.kml",
     log:
-        "logs/automatic/unzip_co2stop.log",
+        "<logs>/automatic/unzip_co2stop.log",
     conda:
         "../envs/co2stop.yaml"
     script:
