@@ -1,15 +1,15 @@
 [workspace]
 name = "module_co2stop_cdr"
 authors = ["See AUTHORS file"]
-description = "A module to aggregate CDR potential from the CO2Stop dataset into flexible spatial resolutions"
+description = "A module to aggregate CDR potential in Europe into flexible spatial resolutions, using the CO2Stop dataset"
 license = "Apache-2.0"
 readme = "README.md"
 channels = ["conda-forge", "bioconda"]
 platforms = ["win-64", "linux-64", "osx-arm64"]
-homepage = "https://clio.readthedocs.io/"
+homepage = "https://www.modelblocks.org/"
 
 [dependencies]
-clio-tools = ">=2025.03.03"
+clio-tools = ">=2026.03.30"
 conda = ">=25.0.0"
 ipdb = ">=0.13.13"
 ipykernel = ">=6.29.5"
@@ -20,6 +20,30 @@ python = ">=3.12"
 ruff = ">=0.9.9"
 snakefmt = ">=0.10.2"
 snakemake-minimal = ">=8.29.0"
+pytz = ">=2026.1.post1"
 
 [tasks]
-test-integration = {cmd = "pytest tests/clio_test.py"}
+test-integration = {cmd = "pytest tests/integration_test.py"}
+
+[feature.co2stop]
+channels = ["conda-forge"]
+
+[feature.co2stop.dependencies]
+cmap = "0.7.0.*"
+geopandas = "1.0.1.*"
+ipdb = "0.13.13.*"
+pandas = "3.0.0.*"
+matplotlib = "3.10.8.*"
+numpy = "2.4.1.*"
+pandera = "0.28.1.*"
+pandera-base = "0.28.1.*"
+pandera-geopandas = "0.28.1.*"
+pandera-pandas = "0.28.1.*"
+pyarrow = "23.0.0.*"
+pyproj = "3.7.2.*"
+python = "3.13.11.*"
+pytz = "2025.2.*"
+fiona = "1.10.1.*"
+
+[environments]
+co2stop = { features = ["co2stop"], no-default-feature = true }

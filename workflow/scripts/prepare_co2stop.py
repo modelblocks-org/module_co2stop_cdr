@@ -254,7 +254,16 @@ def harmonise_stopco2_dataset(
     map_file: str, data_file: str, id_col: str, crs: str | int, suffix: str = "_DATA"
 ) -> gpd.GeoDataFrame:
     """Open and combine paired CO2Stop datasets."""
-    gdf = gpd.read_file(map_file).rename({"id": id_col}, axis="columns").to_crs(crs)
+    gdf = gpd.read_file(map_file)
+    internal_id_col = "id"
+    if "ID2" in gdf.columns:
+        # Defend against buggy pattern reading in the KML driver
+        internal_id_col = "ID2"
+    if (internal_id_col not in gdf.columns) or all(gdf[internal_id_col].isnull()):
+        raise RuntimeError(
+            f"Could not parse unique IDs in CO2Stop file {map_file}. Contact module devs."
+        )
+    gdf = gdf.rename({internal_id_col: id_col}, axis="columns").to_crs(crs)
     gdf.geometry = gdf.geometry.force_2d().make_valid()
     return gdf.merge(
         pd.read_csv(data_file), how="inner", on=id_col, suffixes=("", suffix)
@@ -343,7 +352,6 @@ def main() -> None:
         capacity_scenarios, how="inner", right_index=True, left_index=True
     )
     dataset = dataset.dropna(subset=capacity_cols, how="all")
-
     # Plot omissions
     countries = gpd.read_file(snakemake.input.countries).to_crs(geo_crs)
     fig, ax = plot_kept_polygons(countries, all_polygons, dataset[data_id])

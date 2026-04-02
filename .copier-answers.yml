@@ -1,13 +1,13 @@
 # Changes here will be overwritten by Copier
-# DO NOT MANUALLY MODIFY THIS FILE
+# !!!!! DO NOT MANUALLY MODIFY THIS FILE !!!!!
 _commit: latest
-_src_path: https://github.com/calliope-project/data-module-template.git
+_src_path: https://github.com/modelblocks-org/data-module-template.git
 author_email: i.ruizmanuel@tudelft.nl
 author_family_name: Ruiz Manuel
 author_given_name: Ivan
-github_org: calliope-project
+github_org: modelblocks-org
 license: Apache-2.0
-module_description: A module to aggregate CDR potential from the CO2Stop dataset into
-    flexible spatial resolutions
-module_long_name: Module CO2Stop - Carbon Dioxide Removal
+module_description: A module to aggregate CDR potential in Europe into flexible spatial
+    resolutions, using the CO2Stop dataset
+module_long_name: Module CO2Stop - Carbon Dioxide Removal in Europe
 module_short_name: module_co2stop_cdr
