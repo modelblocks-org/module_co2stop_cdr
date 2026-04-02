@@ -16,21 +16,21 @@ rule prepare_co2stop_storage_units:
         polygons=rules.unzip_co2stop.output.storage_map,
         countries=rules.unzip_co2stop.output.country_map,
     output:
-        mtco2="resources/automatic/co2stop/storage_units/aquifer.parquet",
+        mtco2="<resources>/automatic/co2stop/storage_units/aquifer.parquet",
         plot_kept=report(
-            "resources/automatic/co2stop/storage_units/aquifer_kept.png",
+            "<resources>/automatic/co2stop/storage_units/aquifer_kept.png",
             caption="../report/prepare_co2stop_kept.rst",
             category="CO2Stop module",
             subcategory="kept polygons",
         ),
         plot_scenarios=report(
-            "resources/automatic/co2stop/storage_units/aquifer_scenarios.png",
+            "<resources>/automatic/co2stop/storage_units/aquifer_scenarios.png",
             caption="../report/prepare_co2stop_scenarios.rst",
             category="CO2Stop module",
             subcategory="scenarios",
         ),
     log:
-        "logs/storage_units/aquifer/prepare_co2stop.log",
+        "<logs>/storage_units/aquifer/prepare_co2stop.log",
     conda:
         "../envs/co2stop.yaml"
     script:
@@ -50,21 +50,21 @@ rule prepare_co2stop_traps:
         polygons=rules.unzip_co2stop.output.traps_map,
         countries=rules.unzip_co2stop.output.country_map,
     output:
-        mtco2="resources/automatic/co2stop/traps/{cdr_group}.parquet",
+        mtco2="<resources>/automatic/co2stop/traps/{cdr_group}.parquet",
         plot_kept=report(
-            "resources/automatic/co2stop/traps/{cdr_group}_kept.png",
+            "<resources>/automatic/co2stop/traps/{cdr_group}_kept.png",
             caption="../report/prepare_co2stop_kept.rst",
             category="CO2Stop module",
             subcategory="kept polygons",
         ),
         plot_scenarios=report(
-            "resources/automatic/co2stop/traps/{cdr_group}_scenarios.png",
+            "<resources>/automatic/co2stop/traps/{cdr_group}_scenarios.png",
             caption="../report/prepare_co2stop_scenarios.rst",
             category="CO2Stop module",
             subcategory="scenarios",
         ),
     log:
-        "logs/traps/{cdr_group}/prepare_co2stop.log",
+        "<logs>/traps/{cdr_group}/prepare_co2stop.log",
     wildcard_constraints:
         cdr_group="|".join(CDR_GROUP),
     conda:

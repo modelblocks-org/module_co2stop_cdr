@@ -1,16 +1,32 @@
 # Module Input-Output structure for automated doc. generation
-resources:
-  user:
-    "{shapes}/shapes.parquet": |
-      Region geometries in parquet format.
-      These should conform to the schema defined in https://github.com/calliope-project/module_geo_boundaries/.
-results:
-  "{shapes}/{scenario}/{cdr_group}.parquet": |
-    parquet data table with aggregated CO2 sequestration potential per shape in MtCO2.
-    This is the total potential, not an annual rate!
-  "{shapes}/{scenario}/totals.parquet": |
-    parquet data table with the sum of all cdr_groups.
-
+pathvars:
+  snakemake_defaults:
+    logs:
+      default: "<logs>"
+      description: location of rule log files.
+    resources:
+      default: "<resources>"
+      description: "location of module resource files."
+    results:
+      default: "<results>"
+      description: "location of module results."
+  user_resources:
+    user_shapes:
+      default: "<resources>/user/{shapes}/shapes.parquet"
+      description: |
+        Region geometries in parquet format.
+        These should conform to the schema defined in https://github.com/calliope-project/module_geo_boundaries/.
+  results:
+    cdr_group:
+      default: "<results>/{shapes}/{scenario}/{cdr_group}.parquet"
+      description: |
+        parquet table with aggregated CO2 sequestration potential for a specific CDR group type and scenario.
+        Potential is in MtCO2. This is the total potential, not an annual rate!
+    total_aggregate:
+      default: "<results>/{shapes}/{scenario}/totals.parquet"
+      description: |
+        parquet data table with the sum of all CDR groups in a specific scenario.
+        If you do not distinguish between CDR facility types in your study, this is likely the file you want.
 wildcards:
   shapes: name of the provided shapefile case.
   scenario: requested CO2Stop CDR scenario. Can be 'low', 'medium', or 'high'.

@@ -1,19 +1,20 @@
 name: co2stop
 channels:
-  - conda-forge
-  - nodefaults
+- conda-forge
+- nodefaults
 dependencies:
-  - cmap = 0.7.0
-  - geopandas = 1.0.1
-  - ipdb = 0.13.13
-  - pandas = 3.0.0
-  - matplotlib = 3.10.8
-  - numpy = 2.4.1
-  - pandera = 0.28.1
-  - pandera-base = 0.28.1
-  - pandera-geopandas = 0.28.1
-  - pandera-pandas = 0.28.1
-  - pyarrow = 23.0.0
-  - pyproj = 3.7.2
-  - python = 3.13.11
-  - pytz = 2025.2
+- cmap 0.7.0.*
+- geopandas 1.0.1.*
+- ipdb 0.13.13.*
+- pandas 3.0.0.*
+- matplotlib 3.10.8.*
+- numpy 2.4.1.*
+- pandera 0.28.1.*
+- pandera-base 0.28.1.*
+- pandera-geopandas 0.28.1.*
+- pandera-pandas 0.28.1.*
+- pyarrow 23.0.0.*
+- pyproj 3.7.2.*
+- python 3.13.11.*
+- pytz 2025.2.*
+- fiona 1.10.1.*
